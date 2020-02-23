@@ -1,0 +1,37 @@
+{% extends 'music/base.html' %} {% block content %}<section>
+	<div id="section"><button class="btn btn-secondary btn-lg"><a href="{% url 'music:create_album' %}">
+				Add
+				Product</a></button></div>
+
+</section>
+<section>
+	{% if album_list %}
+
+	<div class="card-deck">
+
+		{% for album in album_list %}
+
+		<div class="col-sm-4 col-lg-4 col-xl-4 pb-1">
+			<div class="card h-100 bg-light mb-3">
+				{%if album.product_logo %}
+
+				<img src="{{ album.product_logo.url }}" class="card-img-top" height="220px">
+				{%endif%}
+				<div class="card-body">
+					<h5 class="card-title">{{album.product_name}}</h5>
+
+					<a href="{% url 'music:details' album.id %}" class="btn btn-primary">About
+						Product</a>
+				</div>
+				<div class="card-footer">
+					<small class="text-muted">created at: {{album.was_published_recently}}</small>
+				</div>
+
+			</div>
+		</div>
+
+		{% endfor %}
+	</div>
+	{% else %}
+	<h1>No album's available</h1>
+	{% endif %} </section>{% endblock %}

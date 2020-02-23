@@ -1,0 +1,119 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'index'%}">
+      <img src=" {% static 'img/logo1.png' %} " class="logo" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav">
+        <li {% if '/' ==  request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+          <a class="nav-link" href="{% url 'index' %}">Home</a>
+
+
+        </li>
+
+
+        <li {% if '/listings/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3"
+          {% endif %}>
+          <a class="nav-link" href="{% url 'listings' %}">All Products</a>
+        </li>
+        <li class="nav-item mr-3">
+          <a class="nav-link" href="{% url 'music:index2' %}">Sell Products </a>
+        </li>
+        <!-- 
+        <li class=" nav-item mr-3">
+          <a class="nav-link" href="{% url 'orders:list' %}">Track My Orders</a>
+
+
+        </li> -->
+
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+
+        <!-- <li class=" nav-item mr-3">
+          <form action="{% url 'search' %}">
+            <input id="search" type="text" name="keywords" placeholder="Search...">
+          </form>
+        </li> -->
+        <nav class="navbar navbar-light ">
+          <form action="{% url 'search' %}" class="form-inline">
+            <input id="search" name="keywords" class="form-control mr-sm-2" type="text" placeholder="Search"
+              aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </nav>
+        <li {% if 'carts' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+          <a class="nav-link" href="{% url 'cart:home' %}"><span class='itemCount'>My Shopping Order:
+              <a href="{% url 'carts2:cart_detail' %}" style="color:azure">
+                {{ totail_items }} item {{ carts2|length }}, TK. {{ carts2.get_total_price }}</span>
+            <i class="fas fa-shopping-cart "></i>Cart </a>
+        </li>
+
+
+
+        <div class="dropdown">
+          <button class=" btn nav-link padding=0 border: none bg-primary dropdown-toggle mr-3" type="button"
+            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Account
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{% url 'user_profile' %}">
+              <i class="fas fa-user"></i>Welcome {{user.username}}</a>
+            <a class="dropdown-item" href="{% url 'varify_order'%}">Varify Order</a>
+            <a class="dropdown-item" href="{% url 'orders:list' %}">Track My Orderss</a>
+            <a class="dropdown-item" href="javascript:{document.getElementById('signout').submit()}" class="nav-link">
+              <i class="fas fa-sign-out-alt"></i> SignOut
+
+            </a>
+            <form action="{% url 'signout' %}" method="POST" id="signout">
+              {% csrf_token %}
+              <input type="hidden">
+            </form>
+
+          </div>
+        </div>
+        <!-- <li {% if 'dashboard' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3"
+          {% endif %}>
+          <a class="nav-link" href="{% url 'dashboard' %}">
+            <i class="fas fa-user"></i>Welcome {{user.username}}</a>
+        </li> -->
+        <!-- Log Out -->
+        <!-- <li class="nav-item mr-3">
+          <a href="javascript:{document.getElementById('signout').submit()}" class="nav-link">
+            <i class="fas fa-sign-out-alt"></i> SignOut
+          </a>
+          <form action="{% url 'signout' %}" method="POST" id="signout">
+            {% csrf_token %}
+            <input type="hidden">
+          </form>
+        </li> -->
+        {% else %}
+        <li {% if 'signup' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3"
+          {% endif %}>
+          <a class="nav-link" href="{% url 'signup' %}">
+            <i class="fas fa-user-plus"></i> Signup</a>
+        </li>
+
+        <li {% if 'signin' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3"
+          {% endif %}>
+          <a class="nav-link" href="{% url 'signin' %}">
+            <i class="fas fa-sign-in-alt"></i>
+
+            SignIn</a>
+        </li>
+
+
+        {% endif %}
+
+
+
+
+      </ul>
+    </div>
+  </div>
+</nav>

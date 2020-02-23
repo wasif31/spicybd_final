@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bingo {% block title %} {% endblock %}</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'css/all.css' %}">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <!-- Custom -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- lightbox -->
+  <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
+</head>
+
+<body>
+
+  <!--topbar-->
+  {% include 'partials/_topbar.html' %}
+
+  <!--navbar-->
+  {% include 'partials/_navbar.html' %}
+  <!-- {% include 'partials/_searchbar.html' %} -->
+  {% block content %} {% endblock %}
+  <!--footerr-->
+  {% include 'partials/_footer.html' %}
+  <!--<script src="{% static 'js/jquery-1.11.0.min.js' %}""></script>-->
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/lightbox.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/ecommerce.js' %}"></script>
+  <script src="{% static 'js/csrf.ajax.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+  <!-- <script src="{% static 'js/extention/choices.js' %}"></script> -->
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row text-center">
+    <div class="col-12 col-md-6 mx-auto">
+
+        Please complete your bKash payment at first, then fill up the form below.<br />
+        Process:<br />
+        1. Dial *247# on your phone.<br />
+
+        2. Select Payment.<br />
+
+        3. Enter bKash Merchant Number: 01700923938<br />
+
+        4. Enter 101 as Amount.<br />
+
+        5. Enter "1" as reference number.<br />
+
+        6. Enter "1" as counter number.<br />
+
+        7. Enter your bKash pin number and confirm.<br />
+
+        Done! You will receive a confirmation message from bKash with Transaction ID.<br> Then enter it below.<br />
+        bKash Merchant Number : 01700923938<br />
+        Your bKash Number<br />
+
+        <h1>Create a Post </h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            order_id: <input type="text" name="order_id" /><br />
+            <br />
+            Tx: <input type="text" name="transaction_id" /><br />
+            <br />
+            Your BKASH Number: <input name="bkash_number" /><br />
+            <br />
+
+            <input type="submit" value="Save" />
+        </form>
+    </div>
+</div>
+{% endblock %}

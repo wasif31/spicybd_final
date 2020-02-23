@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1 class="display-4">User Profile</h1>
+                <p class="lead">Manage your Account</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'index' %}">
+                        <i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="breadcrumb-item active"> Profile</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!--message alearts included-->
+{% include 'partials/_msgalerts.html' %}
+<div class="row">
+    <style>
+        .list-group-item {
+
+            background-color: darkslateblue;
+            margin: 5px;
+        }
+    </style>
+    <div class='col-12 col-md-3 my-3'>
+        <div class="card" style="width: 18rem;">
+
+            <div class="card-body">
+                <h5 class="card-title">Support</h5>
+                <div class='list-group'>
+
+                    <a class="btn btn-primary list-group-item" href="{% url "about" %}">About
+
+                    </a>
+                    <a class="btn btn-primary list-group-item" href="{% url "about" %}">Contact
+
+                    </a>
+                </div>
+                <p class="card-text">-About<br>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class='col-12 col-md-3 my-3'>
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Billing</h5>
+                <a class="btn btn-primary list-group-item" href="{% url "orders:list" %}">Orders
+
+                </a>
+
+                <a class="btn btn-primary list-group-item" href="{% url 'page_not_found' %}">Address
+
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+    <div class='col-12 col-md-3 my-3'>
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Personal Information</h5>
+                <a class="btn btn-primary list-group-item" href="{% url 'page_not_found' %}">Edit User Details
+
+                </a>
+                <a class="btn btn-primary list-group-item" href="{% url 'page_not_found' %}">Password Change
+
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <div class='col-12 col-md-3 my-3'>
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Notifications</h5>
+                <a class="btn btn-primary list-group-item" href="{% url "page_not_found" %}">Notifications
+
+                </a>
+                <a class="btn btn-primary list-group-item" href="{% url "page_not_found" %}">Others</a>
+
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
