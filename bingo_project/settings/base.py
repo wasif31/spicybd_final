@@ -1,3 +1,4 @@
+import dj_database_url
 from django.contrib.messages import constants as messages
 import os
 
@@ -88,7 +89,9 @@ DATABASES = {
     }
 }
 
-
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+DATABASES['default']['CONN_MAX_AGE'] = 500
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
