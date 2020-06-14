@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Seller, Category
+from .models import Seller, Category,Slider
 from mptt.admin import MPTTModelAdmin
 from mptt.admin import DraggableMPTTAdmin
 
@@ -21,3 +21,15 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category, DraggableMPTTAdmin)
+
+
+class SliderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'image', 'order', 'start_date',
+                    'end_date', 'active', 'featured')
+    list_editable = ['order']
+
+    class Meta:
+        model = Slider
+
+
+admin.site.register(Slider, SliderAdmin)

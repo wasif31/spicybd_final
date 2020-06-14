@@ -2,52 +2,6 @@
 {% load humanize %}
 {% block title %} | Welcome {% endblock %}
 {% block content %}
-<!--front searchbox-->
-<div id="demo" class="carousel slide" data-ride="carousel">
-
-  <!-- Indicators -->
-  <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
-  </ul>
-
-  <!-- The slideshow -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="static/img/img2.jpg" alt="Los Angeles" width="1100" height="500">
-      <div class="carousel-caption">
-        <h3>Shop Now</h3>
-        <p>Check our Products...!</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="static/img/img1.jpg" alt="Chicago" width="1100" height="500">
-      <div class="carousel-caption">
-        <h3>Go to the Offer</h3>
-        <p>Flat 90% off </p>
-      </div>
-
-    </div>
-    <div class="carousel-item">
-      <img src="static/img/img2.jpg" alt="New York" width="1100" height="500">
-      <div class="carousel-caption">
-        <h3>Check The New Products</h3>
-        <p>CheckOut the deals</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-</div>
-
-
 
 
 
@@ -60,10 +14,42 @@
 </style>
 <!-- Showcase -->
 <section id="showcase">
-
+  {% if sliders %}
   <div class="container text-center">
-
-
+    <div id="demo" class="carousel slide" data-ride="carousel">
+  
+      <!-- Indicators -->
+      <ul class="carousel-indicators">
+        {% for slider in sliders %}
+        <li data-target="#demo" data-slide-to="{{forloop.counter}}" {% if forloop.first %}class="active" {% endif %}>
+        </li>
+        {% endfor %}
+      </ul>
+      <!-- The slideshow -->
+      <div class="carousel-inner " role="listbox">
+        {% for slider in sliders %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <img src="{{slider.image.url}}" alt="Slideshow3" width="1100" height="500">
+          <div class="carousel-caption">
+            {% if slider.header_text %}
+            <h1>{{slider.header_text}}</h1>
+            {% endif %}
+            {% if slider.header_text %}
+            <p>{{slider.text}}</p>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+        </div>
+        {% endif %}
     <div class="home-search p-5">
       <div class="overlay p-5">
         <h1 class="display-4 mb-4">
