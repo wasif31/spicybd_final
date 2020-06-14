@@ -24,7 +24,7 @@ SECRET_KEY = '_!947x=ql0f*%uf7y+ix&%l9y%o$8&7zbhl^sf!%6-2rib3@qg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.herokuapp.com',  '127.0.0.1', 'infinite-tundra-14096.herokuapp.com']
 
 
 # Application definition
